@@ -8,6 +8,13 @@
         <meta name="description" content="Vietgram, like Instagram but with Pho" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/styles.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <?php
+            session_start();
+            if (isset($_SESSION['username'])) {
+                header('location:feed.php');
+            }
+        ?>
     </head>
     <body>
         <main id="login">
@@ -17,13 +24,13 @@
             <div class="login__column">
                 <div class="login__box">
                     <img src="images/loginLogo.png" class="login__logo" />
-                    <form action="feed.html" method="get" class="login__form">
+                    <form action="login.php" method="post" class="login__form">
                         <input type="text" name="username" placeholder="Username" required />
                         <input type="password" name="password" placeholder="Password" required />
-                        <input type="submit" value="Log in" />
+                        <input type="submit" name="submit" value="Log in" class="submit" />
                     </form>
                     <span class="login__divider">or</span>
-                    <a href="#" class="login__link">
+                    <a href="#" class="login__link facebook" id="facebook">
                         <i class="fa fa-money"></i>
                         Log in with Facebook
                     </a>
@@ -63,4 +70,9 @@
             </div>
         </footer>
     </body>
+    <?php 
+        if (isset($_GET['error'])) { ?>
+            <script> $('.facebook').append('<p style="color:red; margin-top:25px">Username atau password salah!</p>') </script> <?php
+        }
+    ?>
 </html>

@@ -8,6 +8,11 @@
     <title>Feed | Vietgram</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <?php
+        session_start();
+        if (!isset($_SESSION['username']))
+            header('location:index.php');
+    ?>
 </head>
 
 <body>
@@ -37,6 +42,11 @@
                 <li class="navigation__list-item">
                     <a href="profile.html" class="navigation__link">
                         <i class="fa fa-user-o fa-lg"></i>
+                    </a>
+                </li>
+                <li class="navigation__list-item">
+                    <a href="logout.php" class="navigation__link">
+                        <i class="fa fa-sign-out fa-lg"></i>
                     </a>
                 </li>
             </ul>
