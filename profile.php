@@ -8,6 +8,11 @@
     <title>Profile | Vietgram</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <?php
+        session_start();
+        if (!isset($_SESSION['username']))
+            header('location:index.php');
+    ?>
 </head>
 
 <body>
@@ -38,17 +43,28 @@
                         <i class="fa fa-user-o fa-lg"></i>
                     </a>
                 </li>
+                <li class="navigation__list-item">
+                    <a href="logout.php" class="navigation__link">
+                        <i class="fa fa-sign-out fa-lg"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
     <main id="profile">
+        <?php 
+            include "connection.php";
+            $username = $_SESSION['username'];
+            $query = mysqli_query($conn,"SELECT * FROM PROFILES WHERE USERNAME = '$username'");
+            $result = mysqli_fetch_array($query);
+        ?>
         <header class="profile__header">
             <div class="profile__column">
                 <img src="images/avatar.jpg" />
             </div>
             <div class="profile__column">
                 <div class="profile__title">
-                    <h3 class="profile__username">serranoarevalo</h3>
+                    <h3 class="profile__username"><?php echo $result[0] ?></h3>
                     <a href="edit-profile.html">Edit profile</a>
                     <i class="fa fa-cog fa-lg"></i>
                 </div>
@@ -65,11 +81,9 @@
                 </ul>
                 <p class="profile__bio">
                     <span class="profile__full-name">
-                        Nicolás Serrano Arévalo
-                    </span> Doing whatever and eating Pho Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Ducimus suscipit praesentium eveniet quibusdam ipsam omnis fugit. Tempore voluptates ratione recusandae
-                    natus illo perspiciatis suscipit, odio consequuntur quasi obcaecati minus! Omnis.
-                    <a href="#">serranoarevalo.com</a>
+                        <?php echo $result[1] ?>
+                    </span> <?php echo $result[4] ?>
+                    <a href="https://<?php echo $result[3] ?>" target="_blank"><?php echo $result[3] ?></a>
                 </p>
             </div>
         </header>
