@@ -25,7 +25,7 @@
                 <div class="login__box">
                     <img src="images/loginLogo.png" class="login__logo" />
                     <form action="login.php" method="post" class="login__form">
-                        <input type="text" name="username" placeholder="Username" required />
+                        <input type="text" name="username" placeholder="Username" required autofocus />
                         <input type="password" name="password" placeholder="Password" required />
                         <input type="submit" name="submit" value="Log in" class="submit" />
                     </form>

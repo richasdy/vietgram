@@ -25,7 +25,9 @@
         </div>
         <div class="navigation__column">
             <i class="fa fa-search"></i>
-            <input type="text" placeholder="Search">
+            <form action="feed.php" method="get">
+                <input type="text" placeholder="Search" name="search">
+            </form>
         </div>
         <div class="navigation__column">
             <ul class="navigations__links">

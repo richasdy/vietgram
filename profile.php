@@ -24,7 +24,9 @@
         </div>
         <div class="navigation__column">
             <i class="fa fa-search"></i>
-            <input type="text" placeholder="Search">
+            <form action="feed.php" method="get">
+                <input type="text" placeholder="Search" name="search">
+            </form>
         </div>
         <div class="navigation__column">
             <ul class="navigations__links">
@@ -88,58 +90,27 @@
             </div>
         </header>
         <section class="profile__photos">
-            <div class="profile__photo">
-                <img src="images/feedPhoto.jpg" />
-                <div class="profile__photo-overlay">
-                    <span class="overlay__item">
-                        <i class="fa fa-heart"></i>
-                        486
-                    </span>
-                    <span class="overlay__item">
-                        <i class="fa fa-comment"></i>
-                        344
-                    </span>
-                </div>
-            </div>
-            <div class="profile__photo">
-                <img src="images/feedPhoto.jpg" />
-                <div class="profile__photo-overlay">
-                    <span class="overlay__item">
-                            <i class="fa fa-heart"></i>
-                            486
-                        </span>
-                    <span class="overlay__item">
-                            <i class="fa fa-comment"></i>
-                            344
-                        </span>
-                </div>
-            </div>
-            <div class="profile__photo">
-                <img src="images/feedPhoto.jpg" />
-                <div class="profile__photo-overlay">
-                    <span class="overlay__item">
+            <?php 
+                include 'connection.php';
+                $username = $_SESSION['username'];
+                $query = mysqli_query($conn,"SELECT * FROM PHOTOS WHERE USERNAME = '$username'");
+                $result = mysqli_fetch_array($query);
+                while ($result = mysqli_fetch_array($query)) { ?>
+                    <div class="profile__photo">
+                        <img src="<?php echo $result['url'] ?>" style="width: 100%;height: 296px"/>
+                        <div class="profile__photo-overlay">
+                            <span class="overlay__item">
                                 <i class="fa fa-heart"></i>
-                                486
+                                <?php echo $result['likes'] ?>
                             </span>
-                    <span class="overlay__item">
+                            <span class="overlay__item">
                                 <i class="fa fa-comment"></i>
                                 344
                             </span>
-                </div>
-            </div>
-            <div class="profile__photo">
-                <img src="images/feedPhoto.jpg" />
-                <div class="profile__photo-overlay">
-                    <span class="overlay__item">
-                                    <i class="fa fa-heart"></i>
-                                    486
-                                </span>
-                    <span class="overlay__item">
-                                    <i class="fa fa-comment"></i>
-                                    344
-                                </span>
-                </div>
-            </div>
+                        </div>
+                    </div> <?php
+                }
+            ?>
         </section>
     </main>
     <footer class="footer">
