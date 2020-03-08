@@ -62,7 +62,7 @@
                 include 'connection.php';
                 $search = $_GET['search'];
                 $query = mysqli_query($conn, "SELECT * FROM PHOTOS JOIN USERS USING(USERNAME) WHERE CAPTION LIKE '%$search%'");
-                $result = mysqli_num_rows($query) > 0;
+                $result = mysqli_num_rows($query);
                 if ($result > 0) {
                     while ($res = mysqli_fetch_array($query)) { ?>
                         <div class="photo">
