@@ -1,3 +1,14 @@
+<?php
+    include_once('koneksi.php');
+    session_start();
+    $username = $_SESSION['username'];
+    $sql = "select * from profile where username = '$username'";
+
+    $result = $conn->query($sql);
+
+    $row = $result -> fetch_assoc();
+    echo $username;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +59,11 @@
             </div>
             <div class="profile__column">
                 <div class="profile__title">
-                    <h3 class="profile__username">serranoarevalo</h3>
+                    <h3 class="profile__username">
+                        <?php
+                            echo $row['username'];
+                        ?>
+                    </h3>
                     <a href="edit-profile.html">Edit profile</a>
                     <i class="fa fa-cog fa-lg"></i>
                 </div>

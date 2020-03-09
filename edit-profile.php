@@ -1,3 +1,14 @@
+<?php
+    include_once('koneksi.php');
+    session_start();
+    $username = $_SESSION['username'];
+    $sql = "select * from profile where username = '$username'";
+
+    $result = $conn->query($sql);
+
+    $row = $result -> fetch_assoc();
+    echo $username;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,27 +63,27 @@
             <form action="" class="edit-profile__form">
                 <div class="form__row">
                     <label for="full-name" class="form__label">Name:</label>
-                    <input id="full-name" type="text" class="form__input" />
+                    <input id="full-name" type="text" class="form__input" value= <?php echo $row['name'] ?> />
                 </div>
                 <div class="form__row">
                     <label for="user-name" class="form__label">Username:</label>
-                    <input id="user-name" type="text" class="form__input" />
+                    <input id="user-name" type="text" class="form__input" value= <?php echo $row['username'] ?> />
                 </div>
                 <div class="form__row">
                     <label for="website" class="form__label">Website:</label>
-                    <input id="website" type="url" class="form__input" />
+                    <input id="website" type="url" class="form__input" value= <?php echo $row['website'] ?> />
                 </div>
                 <div class="form__row">
                     <label for="bio" class="form__label">Bio:</label>
-                    <textarea id="bio"></textarea>
+                    <textarea id="bio" value= <?php echo $row['bio'] ?> > <?php echo $row['bio'] ?> </textarea>
                 </div>
                 <div class="form__row">
                     <label for="email" class="form__label">Email:</label>
-                    <input id="email" type="email" class="form__input" />
+                    <input id="email" type="email" class="form__input" value= <?php echo $row['email'] ?> />
                 </div>
                 <div class="form__row">
                     <label for="phone" class="form__label">Phone Number:</label>
-                    <input id="phone" type="tel" class="form__input" />
+                    <input id="phone" type="tel" class="form__input" value= <?php echo $row['phonenumber'] ?> />
                 </div>
                 <div class="form__row">
                     <label for="gender" class="form__label">Gender:</label>
