@@ -95,17 +95,17 @@
                     <label for="gender" class="form__label">Gender:</label>
                     <select name="gender" id="gender">
                         <?php 
-                            if($row['gender'] == "P"){
-                                    echo "<option selected value='P'>Male</option>";
-                                    echo "<option value='L'>Female</option>";
+                            if($row['gender'] == "L"){
+                                    echo "<option selected value='L'>Male</option>";
+                                    echo "<option value='P'>Female</option>";
                                     echo "<option value='cant'>Cant remember</option>";
-                            }elseif($row['gender'] == "L"){
-                                    echo "<option  value='P'>Male</option>";
-                                    echo "<option selected value='L'>Female</option>";
+                            }elseif($row['gender'] == "P"){
+                                    echo "<option  value='L'>Male</option>";
+                                    echo "<option selected value='P'>Female</option>";
                                     echo "<option value='cant'>Cant remember</option>";
                             }else {
-                                    echo "<option  value='P'>Male</option>";
-                                    echo "<option value='L'>Female</option>";
+                                    echo "<option  value='L'>Male</option>";
+                                    echo "<option value='P'>Female</option>";
                                     echo "<option selected value='cant'>Cant remember</option>";
                             }
                         ?>
