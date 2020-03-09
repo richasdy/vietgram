@@ -1,3 +1,19 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username']) == true){
+        header("location: index.php");
+    }
+    
+    include_once('koneksi.php');
+
+    $username = $_SESSION['username'];
+
+    $sql = "select * from profile where username = '$username'";
+   
+    $result = $conn->query($sql);
+
+    $row = $result -> fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +29,7 @@
 <body>
     <nav class="navigation">
         <div class="navigation__column">
-            <a href="feed.html">
+            <a href="feed.php">
                 <img src="images/logo.png" />
             </a>
         </div>
@@ -24,7 +40,7 @@
         <div class="navigation__column">
             <ul class="navigations__links">
                 <li class="navigation__list-item">
-                    <a href="explore.html" class="navigation__link">
+                    <a href="explore.php" class="navigation__link">
                         <i class="fa fa-compass fa-lg"></i>
                     </a>
                 </li>
@@ -34,7 +50,7 @@
                     </a>
                 </li>
                 <li class="navigation__list-item">
-                    <a href="profile.html" class="navigation__link">
+                    <a href="profile.php" class="navigation__link">
                         <i class="fa fa-user-o fa-lg"></i>
                     </a>
                 </li>
@@ -48,8 +64,12 @@
             </div>
             <div class="profile__column">
                 <div class="profile__title">
-                    <h3 class="profile__username">serranoarevalo</h3>
-                    <a href="edit-profile.html">Edit profile</a>
+                    <h3 class="profile__username">
+                        <?php
+                            echo $row['username'];
+                        ?>
+                    </h3>
+                    <a href="edit-profile.php">Edit profile</a>
                     <i class="fa fa-cog fa-lg"></i>
                 </div>
                 <ul class="profile__stats">
@@ -65,11 +85,18 @@
                 </ul>
                 <p class="profile__bio">
                     <span class="profile__full-name">
-                        Nicolás Serrano Arévalo
-                    </span> Doing whatever and eating Pho Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Ducimus suscipit praesentium eveniet quibusdam ipsam omnis fugit. Tempore voluptates ratione recusandae
-                    natus illo perspiciatis suscipit, odio consequuntur quasi obcaecati minus! Omnis.
-                    <a href="#">serranoarevalo.com</a>
+                        <?php
+                            echo $row['name'];
+                        ?>
+                    </span> 
+                        <?php
+                            echo $row['bio'];
+                        ?>
+                    <a href="#">
+                        <?php
+                            echo $row['email'];
+                        ?>
+                    </a>
                 </p>
             </div>
         </header>

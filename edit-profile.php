@@ -1,3 +1,16 @@
+<?php
+    session_start();
+
+    include_once('koneksi.php');
+
+    $username = $_SESSION['username'];
+    
+    $sql = "SELECT * from profile WHERE username='$username'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    // echo $row['website'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,39 +60,55 @@
                 <div class="edit-profile__avatar-container">
                     <img src="images/avatar.jpg" class="edit-profile__avatar" />
                 </div>
-                <h4 class="edit-profile__username">serranoarevalo</h4>
+                <h4 class="edit-profile__username"><?php echo $row['username']; ?></h4>
             </header>
-            <form action="" class="edit-profile__form">
+            <form action="update-profile.php" method="POST" class="edit-profile__form">
+                <div class="form__row">
+                        <label for="user-name" class="form__label">Username:</label>
+                        <input id="user-name" readonly name="username" type="text" value="<?php echo $row['username']; ?>" class="form__input" />
+                </div>    
                 <div class="form__row">
                     <label for="full-name" class="form__label">Name:</label>
-                    <input id="full-name" type="text" class="form__input" />
-                </div>
-                <div class="form__row">
-                    <label for="user-name" class="form__label">Username:</label>
-                    <input id="user-name" type="text" class="form__input" />
+                    <input id="full-name" name="name" type="text" value="<?php echo $row['name']; ?>" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="website" class="form__label">Website:</label>
-                    <input id="website" type="url" class="form__input" />
+                    <input id="website" name="website" type="url" value="<?php echo $row['website']; ?>" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="bio" class="form__label">Bio:</label>
-                    <textarea id="bio"></textarea>
+                    <textarea name="bio" id="bio">
+                        <?php 
+                            echo $row['bio'];
+                        ?>
+                    </textarea>
                 </div>
                 <div class="form__row">
                     <label for="email" class="form__label">Email:</label>
-                    <input id="email" type="email" class="form__input" />
+                    <input id="email" name="email" type="email" value="<?php echo $row['email']; ?>" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="phone" class="form__label">Phone Number:</label>
-                    <input id="phone" type="tel" class="form__input" />
+                    <input id="phone" name="phonenumber" type="tel" value="<?php echo $row['phonenumber']; ?>" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="gender" class="form__label">Gender:</label>
-                    <select id="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="cant">Can't remember</option>
+                    <select name="gender" id="gender">
+                        <?php 
+                            if($row['gender'] == "P"){
+                                    echo "<option selected value='P'>Male</option>";
+                                    echo "<option value='L'>Female</option>";
+                                    echo "<option value='cant'>Cant remember</option>";
+                            }elseif($row['gender'] == "L"){
+                                    echo "<option  value='P'>Male</option>";
+                                    echo "<option selected value='L'>Female</option>";
+                                    echo "<option value='cant'>Cant remember</option>";
+                            }else {
+                                    echo "<option  value='P'>Male</option>";
+                                    echo "<option value='L'>Female</option>";
+                                    echo "<option selected value='cant'>Cant remember</option>";
+                            }
+                        ?>
                     </select>
                 </div>
                 <input type="submit" value="Submit">
