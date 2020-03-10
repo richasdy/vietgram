@@ -77,7 +77,7 @@
                             <span class="photo__location">Bestechung</span>
                         </div>
                     </header>
-                    <img src="<?php echo $row['url'] ?>" />
+                    <img src="upload/<?php echo $row['url'] ?>" />
                     <div class="photo__info">
                         <div class="photo__actions">
                             <span class="photo__action">
