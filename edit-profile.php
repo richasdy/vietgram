@@ -8,8 +8,6 @@
     $sql = "SELECT * from profile WHERE username='$username'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-
-    // echo $row['website'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
