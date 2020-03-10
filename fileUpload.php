@@ -14,5 +14,6 @@
 
     $result = $conn->query($query);
     $conn->close();
-    // header('location: feed.php');
+    
+    header('location: feed.php');
 ?>
