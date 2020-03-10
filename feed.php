@@ -1,6 +1,14 @@
 <?php
     session_start();
-    echo $_SESSION['username'];
+
+    if(!isset($_SESSION['username']) == true){
+        header("location: index.php");
+    }
+
+    include_once('koneksi.php');
+    
+    $sql = "SELECT * FROM photo";
+    $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +26,16 @@
 <body>
     <nav class="navigation">
         <div class="navigation__column">
-            <a href="feed.html">
+            <a href="feed.php">
                 <!-- Master branch comment -->
                 <img src="images/logo.png" />
             </a>
         </div>
         <div class="navigation__column">
             <i class="fa fa-search"></i>
-            <input type="text" placeholder="Search">
+            <form action="feed.php" method="get">
+                <input type="text" name="caption" placeholder="Search">
+            </form>
         </div>
         <div class="navigation__column">
             <ul class="navigations__links">
@@ -48,46 +58,57 @@
         </div>
     </nav>
     <main id="feed">
-        <div class="photo">
-            <header class="photo__header">
-                <img src="images/avatar.jpg" class="photo__avatar" />
-                <div class="photo__user-info">
-                    <span class="photo__author">inthetiger</span>
-                    <span class="photo__location">Bestechung</span>
-                </div>
-            </header>
-            <img src="images/feedPhoto.jpg" />
-            <div class="photo__info">
-                <div class="photo__actions">
-                    <span class="photo__action">
-                        <i class="fa fa-heart-o fa-lg"></i>
-                    </span>
-                    <span class="photo__action">
-                        <i class="fa fa-comment-o fa-lg"></i>
-                    </span>
-                </div>
-                <span class="photo__likes">45 likes</span>
-                <ul class="photo__comments">
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                </ul>
-                <span class="photo__time-ago">2 hours ago</span>
-                <div class="photo__add-comment-container">
-                    <textarea name="comment" placeholder="Add a comment..."></textarea>
-                    <i class="fa fa-ellipsis-h"></i>
+        <?php
+        if(!isset($_GET['caption'])){
+            while($row = mysqli_fetch_assoc($result)){?>
+            <div class="photo">
+                <header class="photo__header">
+                    <img src="images/avatar.jpg" class="photo__avatar" />
+                    <div class="photo__user-info">
+                        <span class="photo__author">inthetiger</span>
+                        <span class="photo__location">Bestechung</span>
+                    </div>
+                </header>
+                <img src="<?php echo $row['url'] ?>" />
+                <div class="photo__info">
+                    <div class="photo__actions">
+                        <span class="photo__action">
+                            <i class="fa fa-heart-o fa-lg"></i>
+                        </span>
+                        <span class="photo__action">
+                            <i class="fa fa-comment-o fa-lg"></i>
+                        </span>
+                    </div>
+                    <span class="photo__likes"><?php echo $row['likes'] ?> likes</span>
+                    <div class="photo__caption"><?php echo $row['caption'] ?></div><br>
+                    <ul class="photo__comments">
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                    </ul>
+                    <span class="photo__time-ago">2 hours ago</span>
+                    <div class="photo__add-comment-container">
+                        <textarea name="comment" placeholder="Add a comment..."></textarea>
+                        <i class="fa fa-ellipsis-h"></i>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php }}
+        else{
+            $caption = $_GET['caption'];
+            $sql = "SELECT * FROM photo WHERE caption like'%$caption%'";
+            $result = $conn->query($sql);
+            while($row = mysqli_fetch_assoc($result)){ 
+        ?>
         <div class="photo">
             <header class="photo__header">
                 <img src="images/avatar.jpg" class="photo__avatar" />
@@ -96,7 +117,7 @@
                     <span class="photo__location">Bestechung</span>
                 </div>
             </header>
-            <img src="images/feedPhoto.jpg" />
+            <img src="<?php echo $row['url'] ?>" />
             <div class="photo__info">
                 <div class="photo__actions">
                     <span class="photo__action">
@@ -106,7 +127,8 @@
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
                 </div>
-                <span class="photo__likes">45 likes</span>
+                <span class="photo__likes"><?php echo $row['likes'] ?> likes</span>
+                <div class="photo__caption"><?php echo $row['caption'] ?></div><br>
                 <ul class="photo__comments">
                     <li class="photo__comment">
                         <span class="photo__comment-author">serranoarevalo</span> love this!
@@ -128,6 +150,8 @@
                 </div>
             </div>
         </div>
+    <?php }}
+    ?>
     </main>
     <footer class="footer">
         <div class="footer__column">

@@ -7,7 +7,6 @@
     $result = $conn->query($sql);
 
     $row = $result -> fetch_assoc();
-    echo $username;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,10 +86,22 @@
                 </div>
                 <div class="form__row">
                     <label for="gender" class="form__label">Gender:</label>
-                    <select id="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="cant">Can't remember</option>
+                    <select name = "gender" id="gender">
+                        <?php
+                            if($row['gender'] == "male"){
+                                echo "<option selected value='male'>Male</option>";
+                                echo "<option value='female'>Female</option>";
+                                echo "<option value='cant'>Cant remember</option>";
+                            }elseif($row['gender'] == "female"){
+                                echo "<option value='male'>Male</option>";
+                                echo "<option selected value='female'>Female</option>";
+                                echo "<option value='cant'>Cant remember</option>";
+                            }else {
+                                echo "<option value='male'>Male</option>";
+                                echo "<option value='female'>Female</option>";
+                                echo "<option selected value='cant'>Cant remember</option>";
+                            }
+                        ?>
                     </select>
                 </div>
                 <input type="submit" value="Submit">
