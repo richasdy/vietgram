@@ -22,4 +22,6 @@ forked from : https://github.com/richasdy/vietgram
 * untuk menambahkan komentar harus manual dari database comments
 * untuk menambahkan jumlah like dan jumlah komen harus manual dari database photo
 
+# change main folder to vietgram_bagas
+
 
