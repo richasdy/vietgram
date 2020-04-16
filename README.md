@@ -12,9 +12,9 @@ forked from : https://github.com/richasdy/vietgram
 
 
 # + fitur:
-	* search by caption 	(hanya bisa di halaman utama (halaman timeline))
-	* upload foto 		(di halaman profile -> klik icon gear disebelah edit profile)
-	* logout 		(di halaman profile -> klik icon gear disebelah edit profile)
+* search by caption 	(hanya bisa di halaman utama (halaman timeline))
+* upload foto 		(di halaman profile -> klik icon gear disebelah edit profile)
+* logout 		(di halaman profile -> klik icon gear disebelah edit profile)
 
 
 # - note:
