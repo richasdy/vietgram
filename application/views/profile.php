@@ -49,7 +49,7 @@
                     <img src="<?=base_url()?>/assets/images/<?= $p['photo_name'] ?>" />
                     <div class="profile__photo-overlay">
                         <span class="overlay__item">
-                            <i class="fa fa-heart" style="color: white"></i>
+                            <i class="fa fa-heart"></i>
                             <?= $p['likes'] ?>
                         </span>
                         <span class="overlay__item">
