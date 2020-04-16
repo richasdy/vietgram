@@ -106,8 +106,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 936px;
-  width: 100%;
+  max-width: 830px; /* before: 936 */
+	/* width: 100%; */
 }
 
 .profile__photos .profile__photo {
@@ -117,8 +117,12 @@
 }
 
 .profile__photo img {
-  max-width: 100%;
-  object-fit: fill;
+  /* max-width: 100%; */
+	min-width: 270px;
+  min-height: 270px;
+  max-width: 270px;
+  max-height: 270px;
+  object-fit: cover; /* before: fill */
 }
 
 .profile__photo .profile__photo-overlay {
@@ -152,6 +156,7 @@
 .profile__photo-overlay .overlay__item i {
   font-size: 130%;
   margin-right: 5px;
+	color: white;
 }
 
 /*tambahan*/
