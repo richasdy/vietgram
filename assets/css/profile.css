@@ -106,8 +106,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 830px; /* before: 936 */
-	/* width: 100%; */
+  max-width: 900px; /* before: 936 */
+/* width: 100%; */
 }
 
 .profile__photos .profile__photo {
@@ -117,8 +117,8 @@
 }
 
 .profile__photo img {
-  /* max-width: 100%; */
-	min-width: 270px;
+/* max-width: 100%; */
+  min-width: 270px;
   min-height: 270px;
   max-width: 270px;
   max-height: 270px;
@@ -129,7 +129,7 @@
   position: absolute;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
+  width: 270px; /* before: 100%; */
   height: 100%;
   display: flex;
   justify-content: center;
