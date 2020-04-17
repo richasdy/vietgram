@@ -107,7 +107,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   max-width: 900px; /* before: 936 */
-/* width: 100%; */
+  width: 100%;
 }
 
 .profile__photos .profile__photo {
