@@ -8,16 +8,16 @@
     <title> <?= $title ?> </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="navigation__column">
-            <a href="feed.php">
+            <a href="<?= base_url() ?>">
                 <!-- Master branch comment -->
-                <img src="images/logo.png" />
+                <img src="<?= base_url('images/logo.png') ?>" />
             </a>
         </div>
         <div class="navigation__column">
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="navigation__list-item">
-                    <a href="profile.php" class="navigation__link">
+                    <a href="<?= base_url('user/profile') ?>" class="navigation__link">
                         <i class="fa fa-user-o fa-lg"></i>
                     </a>
                 </li>
