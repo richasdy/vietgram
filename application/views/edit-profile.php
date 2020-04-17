@@ -8,14 +8,15 @@
                 <h4 class="edit-profile__username"><?= $profile['username'] ?></h4>
             </header>
             <form action="<?= base_url('profile/edit') ?>" method="post" class="edit-profile__form">
+				<div class="form__row">
+                    <label for="user-name" class="form__label" disabled>Username:</label>
+                    <input id="user-name" type="text" class="form__input" name="username" value="<?= $profile['username']?>" disabled/>
+                </div>
                 <div class="form__row">
                     <label for="full-name" class="form__label">Name:</label>
                     <input id="full-name" type="text" class="form__input" name="name" value="<?= $profile['name']?>" /> 
                 </div>
-                <div class="form__row">
-                    <label for="user-name" class="form__label">Username:</label>
-                    <input id="user-name" type="text" class="form__input" name="username" value="<?= $profile['username']?>" />
-                </div>
+                
                 <div class="form__row">
                     <label for="website" class="form__label">Website:</label>
                     <input id="website" type="url" class="form__input" name="website" value="<?= $profile['website']?>" />
