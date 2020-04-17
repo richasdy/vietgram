@@ -5,16 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo isset($_GET['search']) ? $_GET['search'] . " " : "Feed " ?>| Vietgram</title>
+    <title> <?= $title ?> </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <?php
-        session_start();
-        if (!isset($_SESSION['username']))
-            header('location:index.php');
-    ?>
 </head>
 
 <body>
@@ -49,7 +44,7 @@
                     </a>
                 </li>
                 <li class="navigation__list-item">
-                    <a href="logout.php" class="navigation__link">
+                    <a href="<?= base_url('login/logout') ?>" class="navigation__link">
                         <i class="fa fa-sign-out fa-lg"></i>
                     </a>
                 </li>
