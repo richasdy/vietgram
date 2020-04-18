@@ -8,7 +8,7 @@
             while ($res = mysqli_fetch_array($query)) { ?>
                 <div class="photo">
                     <header class="photo__header">
-                        <img src="images/avatar.jpg" class="photo__avatar" />
+                        <img src="<?= base_url('images/avatar.jpg') ?>" class="photo__avatar" />
                         <div class="photo__user-info">
                             <span class="photo__author"><?php echo $res['username'] ?></span>
                             <span class="photo__location">Bestechung</span>
@@ -49,13 +49,13 @@
     } else { ?>
         <div class="photo">
             <header class="photo__header">
-                <img src="images/avatar.jpg" class="photo__avatar" />
+                <img src="<?= base_url('images/avatar.jpg') ?>" class="photo__avatar" />
                 <div class="photo__user-info">
                     <span class="photo__author">inthetiger</span>
                     <span class="photo__location">Bestechung</span>
                 </div>
             </header>
-            <img src="images/feedPhoto.jpg" />
+            <img src="<?= base_url('images/feedPhoto.jpg') ?>" />
             <div class="photo__info">
                 <div class="photo__actions">
                     <span class="photo__action">
@@ -86,13 +86,13 @@
         </div>
         <div class="photo">
             <header class="photo__header">
-                <img src="images/avatar.jpg" class="photo__avatar" />
+                <img src="<?= base_url('images/avatar.jpg') ?>" class="photo__avatar" />
                 <div class="photo__user-info">
                     <span class="photo__author">inthetiger</span>
                     <span class="photo__location">Bestechung</span>
                 </div>
             </header>
-            <img src="images/feedPhoto.jpg" />
+            <img src="<?= base_url('images/feedPhoto.jpg') ?>" />
             <div class="photo__info">
                 <div class="photo__actions">
                     <span class="photo__action">

@@ -5,7 +5,7 @@
     <div class="profile__column">
         <div class="profile__title">
             <h3 class="profile__username"><?= $profile->username ?></h3>
-            <a href="edit-profile.php">Edit profile</a>
+            <a href="<?= base_url('user/edit_profile') ?>">Edit profile</a>
             <i class="fa fa-cog fa-lg"></i>
         </div>
         <ul class="profile__stats">
