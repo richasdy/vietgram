@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 18, 2020 at 04:58 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Host: localhost
+-- Waktu pembuatan: 18 Apr 2020 pada 16.56
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,28 +25,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photo`
+-- Struktur dari tabel `photo`
 --
 
 CREATE TABLE `photo` (
   `url` varchar(50) NOT NULL,
   `caption` varchar(100) NOT NULL,
   `like_photo` tinyint(1) NOT NULL,
-  `username` varchar(20) NOT NULL
+  `username` varchar(20) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `photo`
---
-
-INSERT INTO `photo` (`url`, `caption`, `like_photo`, `username`) VALUES
-('aderai.jpg', 'Ngefans ama Ade Rai', 9, 'marcellorasel'),
-('jasonstatham.jpg', 'Ngefans ama Jason Statham', 9, 'marcellorasel');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profile`
+-- Struktur dari tabel `profile`
 --
 
 CREATE TABLE `profile` (
@@ -59,17 +52,10 @@ CREATE TABLE `profile` (
   `gender` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `profile`
---
-
-INSERT INTO `profile` (`name`, `username`, `website`, `bio`, `email`, `nohp`, `gender`) VALUES
-('Marcello Rasel Hidayatullah', 'marcellorasel', 'http://github.com/marcellorasel', 'Be Strong', 'marcellorasel7@gmail.com', '081213585369', 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -79,35 +65,51 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`username`, `password`, `email`) VALUES
-('marcellorasel', 'marcellorasel', 'marcellorasel7@gmail.com');
+('alex', 'alex', 'alex@yahoo.com');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `profile`
+-- Indeks untuk tabel `photo`
+--
+ALTER TABLE `photo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`name`),
   ADD KEY `profile_FK` (`username`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- Constraints for table `profile`
+-- AUTO_INCREMENT untuk tabel `photo`
+--
+ALTER TABLE `photo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `profile`
 --
 ALTER TABLE `profile`
   ADD CONSTRAINT `profile_FK` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
