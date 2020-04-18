@@ -77,4 +77,9 @@ class M_User extends CI_Model{
         $query = $this->db->count_all_results();
         return $query;
     }
+
+    public function update($username,$data){
+        $this->db->where('username',$username);
+        $this->db->update('profile',$data);
+    }
 }

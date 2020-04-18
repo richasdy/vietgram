@@ -53,7 +53,7 @@
             <div class="profile__column">
                 <div class="profile__title">
                     <h3 class="profile__username"><?php echo $user['username'] ?></h3>
-                    <a href="edit-profile.html">Edit profile</a>
+                    <a href="<?php echo base_url().'index.php/EditProfile_controller/index'?>">Edit profile</a>
                     <i class="fa fa-cog fa-lg"></i>
                 </div>
                 <ul class="profile__stats">
@@ -70,7 +70,7 @@
                 <p class="profile__bio">
                     <span class="profile__full-name">
                         <?php echo $user['fullname']?>
-                    </span><br>
+                    </span><br><br>
                     <?php echo $user['bio'] ?>
                     <a href="#"><?php echo $user['website']?></a>
                 </p>
