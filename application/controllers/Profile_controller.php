@@ -10,6 +10,7 @@ class Profile_controller extends CI_Controller{
 
     public function index(){
         $data = [];
+        $data['title'] = "Profile | Vietgram";
         $username = $this->session->userdata('username');
         $responseUser = $this->M_User->getUserById($username);
         $responsePost = $this->M_User->getUserPost($username);
@@ -27,6 +28,7 @@ class Profile_controller extends CI_Controller{
         } else {
             $data['post'] = array();
         }
-        $this->load->view('profile.php',$data);
+        $this->load->view('header',$data);
+        $this->load->view('profile',$data);
     }
 }

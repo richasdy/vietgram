@@ -82,4 +82,33 @@ class M_User extends CI_Model{
         $this->db->where('username',$username);
         $this->db->update('profile',$data);
     }
+
+    public function uploadPost($caption,$path,$username){
+        $data = array(
+            'caption' => $caption,
+            'photo' =>$path,
+            'likes' => 0
+        );
+        $query = $this->db->insert('post',$data);
+        $query = $query->row_array();
+        $data2 = array(
+            'username' => $username,
+            'id_post' => $query['id_post'],
+        );
+        $query = $this->db->insert('user_post',$data2);
+        if($query){
+            return true;
+        } else {
+            false;
+        }
+    }
+    
+
+    public function updateFollow($person,$username){
+        $data = array(
+            'username' => $username,
+            'follow_to' => $person
+        );
+        $this->db->insert('follow',$data);
+    }
 }

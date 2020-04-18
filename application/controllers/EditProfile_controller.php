@@ -10,6 +10,7 @@ class EditProfile_controller extends CI_Controller{
 
     public function index(){
         $data = [];
+        $data['title'] = "Edit Profile | Vietgram";
         $username = $this->session->userdata('username');
         $responseUser = $this->M_User->getUserById($username);
         if ($responseUser != false) {
@@ -17,6 +18,7 @@ class EditProfile_controller extends CI_Controller{
         } else {
             $data['user'] = array();
         }
+        $this->load->view('header',$data);
         $this->load->view('edit-profile',$data);
     }
 
