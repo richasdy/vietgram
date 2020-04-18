@@ -8,37 +8,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Vietgram, like Instagram but with Pho" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php echo base_url().'assets/css/styles.css'?>">
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/styles.css' ?>">
 </head>
 
 <body>
     <main id="login">
         <div class="login__column">
-            <img src="<?php echo base_url().'assets/images/phoneImage.png'?>" class="login__phone" />
+            <img src="<?php echo base_url() . 'assets/images/phoneImage.png' ?>" class="login__phone" />
         </div>
         <div class="login__column">
             <div class="login__box">
-                <img src="<?php echo base_url().'assets/images/loginLogo.png'?>" class="login__logo" />
-                <form action="<?php echo base_url().'index.php/LoginRegister_controller/login'?>" method="post" class="login__form">
+                <img src="<?php echo base_url() . 'assets/images/loginLogo.png' ?>" class="login__logo" />
+                <form action="<?php echo base_url() . 'index.php/LoginRegister_controller/register' ?>" method="post" class="login__form">
                     <input type="text" name="username" placeholder="Username" required />
+                    <input type="text" name="fullname" placeholder="Full Name" required />
+                    <input type="text" name="email" placeholder="Email" required />
+                    <input type="text" name="phone" placeholder="Phone Number" required />
+                    <select name="gender" id="">
+                        <option value="L">Male</option>
+                        <option value="P">Female</option>
+                    </select>
                     <input type="password" name="password" placeholder="Password" required />
-                    <input type="submit" value="Log in" />
+                    <input type="submit" value="Register" />
                 </form>
                 <span class="login__divider">or</span>
                 <a href="#" class="login__link">
                     <i class="fa fa-money"></i>
-                    Log in with Facebook
+                    Sign Up with Facebook
                 </a>
-                <a href="#" class="login__link login__link--small">Forgot password</a>
             </div>
             <div class="login__box">
-                <span>Don't have an account?</span> <a href="<?php echo base_url().'index.php/LoginRegister_controller/registerIndex'?>">Sign up</a>
+                <span>Already have an account?</span> <a href="<?php echo base_url() . 'index.php/LoginRegister_controller/index' ?>">Log In</a>
             </div>
             <div class="login__box--transparent">
                 <span>Get the app.</span>
                 <div class="login__appstores">
-                    <img src="<?php echo base_url().'assets/images/ios.png'?>" class="login__appstore" alt="Apple appstore logo" title="Apple appstore logo" />
-                    <img src="<?php echo base_url().'assets/images/android.png'?>" class="login__appstore" alt="Android appstore logo" title="Android appstore logo" />
+                    <img src="<?php echo base_url() . 'assets/images/ios.png' ?>" class="login__appstore" alt="Apple appstore logo" title="Apple appstore logo" />
+                    <img src="<?php echo base_url() . 'assets/images/android.png' ?>" class="login__appstore" alt="Android appstore logo" title="Android appstore logo" />
                 </div>
             </div>
         </div>

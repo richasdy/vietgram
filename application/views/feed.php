@@ -1,3 +1,5 @@
+<!-- <?php echo $this->session->userdata('username') ?> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,15 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Feed | Vietgram</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/styles.css' ?>">
 </head>
 
 <body>
     <nav class="navigation">
         <div class="navigation__column">
-            <a href="feed.html">
+            <a href="<?php echo base_url() . 'index.php/Feed_controller/index' ?>">
                 <!-- Master branch comment -->
-                <img src="images/logo.png" />
+                <img src="<?php echo base_url() . 'assets/images/logo.png' ?>" />
             </a>
         </div>
         <div class="navigation__column">
@@ -25,7 +27,7 @@
         <div class="navigation__column">
             <ul class="navigations__links">
                 <li class="navigation__list-item">
-                    <a href="explore.html" class="navigation__link">
+                    <a href="<?php echo base_url() . 'index.php/Explore_controller/index'?>" class="navigation__link">
                         <i class="fa fa-compass fa-lg"></i>
                     </a>
                 </li>
@@ -35,7 +37,7 @@
                     </a>
                 </li>
                 <li class="navigation__list-item">
-                    <a href="profile.html" class="navigation__link">
+                    <a href="" class="navigation__link">
                         <i class="fa fa-user-o fa-lg"></i>
                     </a>
                 </li>
@@ -43,86 +45,48 @@
         </div>
     </nav>
     <main id="feed">
-        <div class="photo">
-            <header class="photo__header">
-                <img src="images/avatar.jpg" class="photo__avatar" />
-                <div class="photo__user-info">
-                    <span class="photo__author">inthetiger</span>
-                    <span class="photo__location">Bestechung</span>
-                </div>
-            </header>
-            <img src="images/feedPhoto.jpg" />
-            <div class="photo__info">
-                <div class="photo__actions">
-                    <span class="photo__action">
-                        <i class="fa fa-heart-o fa-lg"></i>
-                    </span>
-                    <span class="photo__action">
-                        <i class="fa fa-comment-o fa-lg"></i>
-                    </span>
-                </div>
-                <span class="photo__likes">45 likes</span>
-                <ul class="photo__comments">
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                </ul>
-                <span class="photo__time-ago">2 hours ago</span>
-                <div class="photo__add-comment-container">
-                    <textarea name="comment" placeholder="Add a comment..."></textarea>
-                    <i class="fa fa-ellipsis-h"></i>
-                </div>
-            </div>
-        </div>
-        <div class="photo">
-            <header class="photo__header">
-                <img src="images/avatar.jpg" class="photo__avatar" />
-                <div class="photo__user-info">
-                    <span class="photo__author">inthetiger</span>
-                    <span class="photo__location">Bestechung</span>
-                </div>
-            </header>
-            <img src="images/feedPhoto.jpg" />
-            <div class="photo__info">
-                <div class="photo__actions">
-                    <span class="photo__action">
+        <?php foreach ($post as $data) { ?>
+            <div class="photo">
+                <header class="photo__header">
+                    <img src="<?php echo base_url() . 'assets/images/avatar.jpg' ?>" class="photo__avatar" />
+                    <div class="photo__user-info">
+                        <span class="photo__author">inthetiger</span>
+                        <span class="photo__location">Bestechung</span>
+                    </div>
+                </header>
+                <img src="<?php echo $data['photo'] ?>" />
+                <div class="photo__info">
+                    <div class="photo__actions">
+                        <span class="photo__action">
                             <i class="fa fa-heart-o fa-lg"></i>
                         </span>
-                    <span class="photo__action">
+                        <span class="photo__action">
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
-                </div>
-                <span class="photo__likes">45 likes</span>
-                <ul class="photo__comments">
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                    <li class="photo__comment">
-                        <span class="photo__comment-author">serranoarevalo</span> love this!
-                    </li>
-                </ul>
-                <span class="photo__time-ago">2 hours ago</span>
-                <div class="photo__add-comment-container">
-                    <textarea name="comment" placeholder="Add a comment..."></textarea>
-                    <i class="fa fa-ellipsis-h"></i>
+                    </div>
+                    <span class="photo__likes"><?php echo $data['likes'] ?></span>
+                    <ul class="photo__comments">
+                        <li class="photo__comment">
+                            <span class="photo__comment-author"><?php echo $data['username'] ?></span> <?php echo $data['caption'] ?>
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span> love this!
+                        </li>
+                    </ul>
+                    <span class="photo__time-ago">2 hours ago</span>
+                    <div class="photo__add-comment-container">
+                        <textarea name="comment" placeholder="Add a comment..."></textarea>
+                        <i class="fa fa-ellipsis-h"></i>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
     </main>
     <footer class="footer">
         <div class="footer__column">
