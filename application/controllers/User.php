@@ -43,8 +43,14 @@ class User extends CI_Controller {
     }
 
     public function update_profile() {
+        // if username input have new value
+        if ($this->input->post('username') != $this->session->userdata('username'))
+            // validating form is_unique in users table for username field
+            $is_unique = '|is_unique[users.username]';
+        else
+            $is_unique =  '';
         $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required'.$is_unique);
         $this->form_validation->set_rules('email', 'Email', 'required');
 
         if ($this->form_validation->run()) {
