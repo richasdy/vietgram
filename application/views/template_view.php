@@ -29,7 +29,7 @@
         </div>
         <div class="navigation__column">
             <i class="fa fa-search"></i>
-            <form action="feed.php" method="get">
+            <form action="<?= base_url('user') ?>" method="get">
                 <input type="text" placeholder="Search" name="search">
             </form>
         </div>

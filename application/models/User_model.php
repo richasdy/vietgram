@@ -36,4 +36,13 @@ class User_model extends CI_Model {
         $this->session->set_userdata('username', $user);
     }
 
+    public function searchCaption() {
+        $search = $this->input->get('search');
+        if (!empty($search)) {
+            return $this->db->like('caption', $search)
+                            ->get('photos')
+                            ->result();
+        }
+    }
+
 }

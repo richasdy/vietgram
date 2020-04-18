@@ -11,6 +11,8 @@ class User extends CI_Controller {
 
 	public function index() {
 		if ($this->session->userdata('logged_in')) {
+            if ($this->input->get('search'))
+                $data['search'] = $this->User_model->searchCaption();
             $data['title'] = 'Feed | Vietgram';
             $data['main_view'] = 'feed_view';
             $data['id'] = 'feed';
@@ -45,7 +47,7 @@ class User extends CI_Controller {
     public function update_profile() {
         // if username input have new value
         if ($this->input->post('username') != $this->session->userdata('username'))
-            // validating form is_unique in users table for username field
+            // form_validation rule: is_unique in users table for username field
             $is_unique = '|is_unique[users.username]';
         else
             $is_unique =  '';
